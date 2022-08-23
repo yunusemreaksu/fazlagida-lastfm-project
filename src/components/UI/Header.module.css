@@ -12,6 +12,16 @@
 }
 
 .button_dark {
-  background-color: aqua;
+  background-color: #e3e8eb;
   border-radius: 5px;
+}
+
+.header_light {
+  background-color: #fff;
+  color: #222;
+}
+
+.header_dark {
+  background-color: #222;
+  color: #fff;
 }

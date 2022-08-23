@@ -11,10 +11,14 @@
   align-items: top;
 }
 
-.item_info{
+.item_info {
 }
 
-.item_image{
-    width: 48px;
-    height: 48px;
+.item_image {
+  width: 48px;
+  height: 48px;
+}
+
+a {
+  text-decoration: none;
 }

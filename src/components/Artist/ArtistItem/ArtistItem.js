@@ -4,13 +4,15 @@ const ArtistItem = (props) => {
   return (
     <li className={classes.item_container}>
       <div className={classes.item_info}>
-        <h2> {props.name} </h2>
+        <h3>
+          <a href="/artistdetails"> {props.name} </a>
+        </h3>
         <p>Playcount: {props.playcount} </p>
         <p>Listeners: {props.listeners} </p>
-        <a href={props.url}>Artist's Page</a>
+        <a href={props.url}>Artist's Last.FM Page</a>
       </div>
       <img
-        src={props.image}
+        src={props.imageText}
         alt={props.name}
         className={classes.item_image}
       />

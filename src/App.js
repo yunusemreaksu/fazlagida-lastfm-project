@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./App.css";
-import ArtistList from "./components/Artist/ArtistList";
+import ArtistList from "./components/Artist/ArtistList/ArtistList";
 import Header from "./components/UI/Header";
+import { ThemeContext } from "./store/ThemeContext";
 
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
 
   const loadingText = <p>LOADING...</p>;
 
@@ -26,10 +30,10 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className={`${darkMode ? "bg_dark" : "bg_light"}`}>
       <Header />
       {isLoading ? loadingText : <ArtistList items={data} />}
-    </>
+    </div>
   );
 }
 
