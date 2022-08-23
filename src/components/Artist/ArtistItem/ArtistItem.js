@@ -1,8 +1,15 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../../store/ThemeContext";
 import classes from "./ArtistItem.module.css";
 
 const ArtistItem = (props) => {
+  const { darkMode } = useContext(ThemeContext);
   return (
-    <li className={classes.item_container}>
+    <li
+      className={`${classes.item_container} ${
+        darkMode ? classes.container_dark : classes.container_light
+      }`}
+    >
       <div className={classes.item_info}>
         <h3>
           <a href="/artistdetails"> {props.name} </a>

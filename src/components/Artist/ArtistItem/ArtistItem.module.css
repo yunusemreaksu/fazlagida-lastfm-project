@@ -11,6 +11,15 @@
   align-items: top;
 }
 
+.container_light {
+  background-color: #e3e8eb;
+}
+
+.container_dark {
+  background-color: black;
+  color: aliceblue;
+}
+
 .item_info {
 }
 

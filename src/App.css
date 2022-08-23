@@ -1,7 +1,13 @@
-.bg-light {
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bg_light {
   background-color: #fff;
 }
 
-.bg-dark {
+.bg_dark {
   background-color: #222;
 }

@@ -1,3 +1,11 @@
-.artists_header {
+.list_header {
   padding: 0 1rem;
+}
+
+.header_light {
+  color: #222;
+}
+
+.header_dark {
+  color: #fff;
 }

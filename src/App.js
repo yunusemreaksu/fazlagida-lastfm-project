@@ -1,15 +1,20 @@
 import { useEffect, useState, useContext } from "react";
-import "./App.css";
 import ArtistList from "./components/Artist/ArtistList/ArtistList";
 import Header from "./components/UI/Header";
-import { ThemeContext } from "./store/ThemeContext";
+import { ThemeContext, ThemeProvider } from "./store/ThemeContext";
+import "./App.css";
 
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
-  const theme = useContext(ThemeContext);
-  const darkMode = theme.state.darkMode;
+
+  const [buttonText, setButtonText] = useState(false);
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+
+  const buttonClickHandler = () => {
+    setButtonText(!buttonText);
+    toggleDarkMode();
+  };
 
   const loadingText = <p>LOADING...</p>;
 
@@ -30,8 +35,11 @@ function App() {
   }, []);
 
   return (
-    <div className={`${darkMode ? "bg_dark" : "bg_light"}`}>
-      <Header />
+    <div className={darkMode ? `container bg_dark` : `container bg_light`}>
+      <Header
+        onThemeChange={buttonClickHandler}
+        items={{ darkMode, buttonText }}
+      />
       {isLoading ? loadingText : <ArtistList items={data} />}
     </div>
   );

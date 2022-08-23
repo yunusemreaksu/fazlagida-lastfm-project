@@ -1,10 +1,19 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../../store/ThemeContext";
 import ArtistItem from "../ArtistItem/ArtistItem";
 import classes from "./ArtistList.module.css";
 
 const ArtistList = (props) => {
+  const { darkMode } = useContext(ThemeContext);
   return (
     <div>
-      <h2 className={classes.artists_header}>Top Artists List</h2>
+      <h2
+        className={`${classes.list_header} ${
+          darkMode ? classes.header_dark : classes.header_light
+        }`}
+      >
+        Top Artists List
+      </h2>
       <ul>
         {props.items.map((item) => (
           <ArtistItem
