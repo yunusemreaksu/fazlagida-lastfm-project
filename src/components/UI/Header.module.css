@@ -9,11 +9,14 @@
 .button_light {
   background-color: aliceblue;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .button_dark {
-  background-color: #e3e8eb;
+  background-color: black;
+  color: aliceblue;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .header_light {
