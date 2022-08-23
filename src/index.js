@@ -13,9 +13,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/artistdetails" element={<ArtistDetails />}>
+        <Route path="artistdetails" element={<ArtistDetails />}>
           <Route path=":artistId" element={<ArtistDetail />} />
         </Route>
+        <Route path="*" element={<p>Nothing here!</p>} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>

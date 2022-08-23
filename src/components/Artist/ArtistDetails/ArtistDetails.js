@@ -27,13 +27,16 @@ const ArtistDetails = () => {
 
   return (
     <div>
-      {data.map((item) => (
-        <Link to={`/artistdetails/${data.mbid}`}>
-          {/* <ArtistDetail key={item.mbid} name={item.name} /> */}
-          <div> {item.name} </div>
-          <div> {item.playcount} </div>
-        </Link>
-      ))}
+      <nav>
+        {data.map((item) => (
+          <Link
+            to={`/artistdetails/${item.artist.name}`}
+            key={item.artist.name}
+          >
+            <ArtistDetail key={item.mbid} name={item.name} />
+          </Link>
+        ))}
+      </nav>
     </div>
   );
 };
