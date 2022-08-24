@@ -1,12 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import ArtistList from "./components/Artist/ArtistList/ArtistList";
-import Header from "./components/UI/Header";
+import Header from "./components/UI/Header/Header";
 import { ThemeContext } from "./store/ThemeContext";
 import "./App.css";
 import axios from "axios";
 import ApiUrl from "./constants/ApiUrl";
 
 function App() {
+  const headerText = "Fazla Gida Last.FM Homework";
   const [artistData, setArtistData] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +62,7 @@ function App() {
     <div className={darkMode ? `container bg_dark` : `container bg_light`}>
       <Header
         onThemeChange={buttonClickHandler}
-        items={{ darkMode, buttonText }}
+        items={{ darkMode, buttonText, headerText }}
       />
       <ArtistList items={artistData} />
       {isLoading && loadingText}

@@ -1,0 +1,38 @@
+* {
+  /* box-sizing: border-box; */
+}
+
+.container_row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .container_column {
+  display: flex;
+  flex-direction: column;
+} */
+
+.card {
+  padding: 1rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.container_album {
+  display: flex;
+  flex-direction: column;
+}
+
+.container_track {
+} */

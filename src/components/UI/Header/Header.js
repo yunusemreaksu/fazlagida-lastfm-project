@@ -1,9 +1,7 @@
 import classes from "./Header.module.css";
 
 const Header = (props) => {
-  const headerText = "Fazla Gida Last.FM Homework";
-
-  const { darkMode, buttonText } = props.items;
+  const { darkMode, buttonText, headerText } = props.items;
 
   const clickHandler = () => {
     props.onThemeChange();
@@ -15,7 +13,7 @@ const Header = (props) => {
         darkMode ? classes.header_dark : classes.header_light
       }`}
     >
-      <h1> {headerText} </h1>
+      <h1 title="Header"> {headerText} </h1>
       <button
         type="button"
         onClick={clickHandler}
