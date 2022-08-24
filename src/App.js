@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import ArtistList from "./components/Artist/ArtistList/ArtistList";
 import Header from "./components/UI/Header";
-import { ThemeContext, ThemeProvider } from "./store/ThemeContext";
+import { ThemeContext } from "./store/ThemeContext";
 import "./App.css";
 import axios from "axios";
 import ApiUrl from "./constants/ApiUrl";
