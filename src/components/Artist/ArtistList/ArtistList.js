@@ -5,6 +5,7 @@ import classes from "./ArtistList.module.css";
 
 const ArtistList = (props) => {
   const { darkMode } = useContext(ThemeContext);
+
   return (
     <div>
       <h2

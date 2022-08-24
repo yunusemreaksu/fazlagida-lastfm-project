@@ -6,11 +6,11 @@ export default class ApiUrl {
     return `${ApiUrl.baseURL}?method=chart.gettopartists&api_key=${ApiUrl.apiKey}&page=${page}&limit=${limit}&format=json`;
   };
 
-  static getTopAlbums = (page = 1, limit = 10) => {
-    return `${ApiUrl.baseURL}?method=artist.gettopalbums&artist=cher&api_key=${ApiUrl.apiKey}&page=${page}&limit=${limit}&format=json`;
+  static getTopAlbums = (artist, page = 1, limit = 10) => {
+    return `${ApiUrl.baseURL}?method=artist.gettopalbums&artist=${artist}&api_key=${ApiUrl.apiKey}&page=${page}&limit=${limit}&format=json`;
   };
 
-  static getTopTracks = (page = 1, limit = 10) => {
-    return `${ApiUrl.baseURL}?method=artist.gettoptracks&artist=cher&api_key=${ApiUrl.apiKey}&page=${page}&limit=${limit}&format=json`;
+  static getTopTracks = (artist, page = 1, limit = 10) => {
+    return `${ApiUrl.baseURL}?method=artist.gettoptracks&artist=${artist}&api_key=${ApiUrl.apiKey}&page=${page}&limit=${limit}&format=json`;
   };
 }
