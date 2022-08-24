@@ -1,0 +1,83 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.main_dark {
+  background-color: black;
+}
+
+.main_light {
+  background-color: #e3e8eb;
+}
+
+.artist {
+  display: flex;
+  padding-left: 1rem;
+}
+
+.artist_dark {
+  color: #e3e8eb;
+  background-color: black;
+}
+
+.artist_light {
+  color: black;
+  background-color: #e3e8eb;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.container_dark {
+  color: aliceblue;
+  background-color: #222;
+}
+
+.container_light {
+  color: black;
+  background-color: #e3e8eb;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 1rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.details_dark {
+  background-color: black;
+  border-color: #e3e8eb;
+}
+
+.details_light {
+  background-color: #e3e8eb;
+  border-color: #222;
+}
+
+.image {
+  display: flex;
+  flex-direction: row;
+}

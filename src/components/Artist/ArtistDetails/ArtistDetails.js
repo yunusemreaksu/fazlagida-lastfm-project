@@ -1,63 +1,129 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// import { Link, Outlet } from "react-router-dom";
-// import ApiUrl from "../../../constants/ApiUrl";
-// import ArtistDetail from "../ArtistDetail/ArtistDetail";
-// import classes from "./ArtistDetails.module.css";
+import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import ApiUrl from "../../../constants/ApiUrl";
+import { ThemeContext } from "../../../store/ThemeContext";
+import classes from "./ArtistDetails.module.css";
 
-// const ArtistDetails = () => {
-//   const [albumData, setAlbumData] = useState([]);
-//   const [trackData, setTrackData] = useState([]);
-//   const [isLoading, setIsLoading] = useState(true);
-//   const loadingText = <p>LOADING...</p>;
+const ArtistDetails = () => {
+  const { darkMode } = useContext(ThemeContext);
+  const [albumData, setAlbumData] = useState([]);
+  const [trackData, setTrackData] = useState([]);
+  const [page, setPage] = useState(1);
+  let params = useParams();
 
-//   const getAlbumAndTrackData = async () => {
-//     const getAlbums = await axios.get(ApiUrl.getTopAlbums());
-//     const getTracks = await axios.get(ApiUrl.getTopTracks());
-//     axios
-//       .all([getAlbums, getTracks])
-//       .then(
-//         axios.spread((...allData) => {
-//           const allAlbumData = allData[0].data.topalbums.album;
-//           const allTrackData = allData[1].data.toptracks.track;
+  const getAlbumAndTrackData = async () => {
+    const getAlbums = await axios.get(
+      ApiUrl.getTopAlbums(params.artistId, page)
+    );
+    const getTracks = await axios.get(
+      ApiUrl.getTopTracks(params.artistId, page)
+    );
+    axios
+      .all([getAlbums, getTracks])
+      .then(
+        axios.spread((...allData) => {
+          const allAlbumData = allData[0].data.topalbums.album;
+          const allTrackData = allData[1].data.toptracks.track;
 
-//           setAlbumData(allAlbumData);
-//           setTrackData(allTrackData);
-//         })
-//       )
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-//   };
+          setAlbumData((prev) => {
+            return [...prev, ...allAlbumData];
+          });
+          setTrackData((prev) => {
+            return [...prev, ...allTrackData];
+          });
+        })
+      )
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
-//   const artistName = albumData.artist;
+  useEffect(() => {
+    getAlbumAndTrackData();
+  }, [page]);
 
-//   useEffect(() => {
-//     getAlbumAndTrackData();
-//   }, []);
+  const handleScroll = async () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
+      setPage((prev) => prev + 1);
+    }
+  };
 
-//   return (
-//     <div>
-//       <nav>
-//         {albumData.map((item) => (
-//           <Link
-//             to={`/artistdetails/${item.artist.name}`}
-//             key={item.artist.name}
-//           >
-//             <ArtistDetail key={item.mbid} albumName={item.name} />
-//           </Link>
-//         ))}
-//         {trackData.map((item) => (
-//           <Link
-//             to={`/artistdetails/${item.artist.name}`}
-//             key={item.artist.name}
-//           >
-//             <ArtistDetail key={item.mbid} trackName={item.name} />
-//           </Link>
-//         ))}
-//       </nav>
-//     </div>
-//   );
-// };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
 
-// export default ArtistDetails;
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div
+      className={`${classes.main} ${
+        darkMode ? classes.main_dark : classes.main_light
+      }`}
+    >
+      <div>
+        <img src="" />
+        <h2
+          className={`${classes.artist} ${
+            darkMode ? classes.artist_dark : classes.artist_light
+          }`}
+        >
+          {params.artistId}
+        </h2>
+      </div>
+
+      <div
+        className={`${classes.container} ${
+          darkMode ? classes.container_dark : classes.container_light
+        }`}
+      >
+        <div className={classes.card}>
+          <h3>TOP ALBUMS</h3>
+          {albumData.map((item) => (
+            <div
+              className={`${classes.details} ${
+                darkMode ? classes.details_dark : classes.details_light
+              }`}
+            >
+              <img
+                src={item.image[2]["#text"]}
+                className={classes.image}
+                alt={item.name}
+              />
+              <div className={classes.texts}>
+                <p>Album Name: {item.name}</p>
+                <p>Playcount: {item.playcount}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={classes.card}>
+          <h3>TOP TRACKS</h3>
+          {trackData.map((item) => (
+            <div
+              className={`${classes.details} ${
+                darkMode ? classes.details_dark : classes.details_light
+              }`}
+            >
+              <img
+                src={item.image[2]["#text"]}
+                className={classes.image}
+                alt={item.name}
+              />
+              <div className={classes.texts}>
+                <p>Song Name: {item.name}</p>
+                <p>Playcount: {item.playcount}</p>
+                <p>Listeners: {item.listeners}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ArtistDetails;

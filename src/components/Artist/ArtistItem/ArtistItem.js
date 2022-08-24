@@ -7,43 +7,7 @@ import ArtistDetail from "../ArtistDetail/ArtistDetail";
 import axios from "axios";
 
 const ArtistItem = (props) => {
-  const htext = `/artistdetails/${props.name}`;
   const { darkMode } = useContext(ThemeContext);
-  const [fetchedName, setFetchedName] = useState("");
-  const [clicked, setClicked] = useState(false);
-  const handleClick = () => {
-    setFetchedName(props.name);
-    setClicked(true);
-  };
-
-  const [albumData, setAlbumData] = useState([]);
-  const [trackData, setTrackData] = useState([]);
-
-  const getAlbumAndTrackData = async () => {
-    const getAlbums = await axios.get(ApiUrl.getTopAlbums(fetchedName));
-    const getTracks = await axios.get(ApiUrl.getTopTracks(fetchedName));
-    axios
-      .all([getAlbums, getTracks])
-      .then(
-        axios.spread((...allData) => {
-          const allAlbumData = allData[0].data.topalbums.album;
-          const allTrackData = allData[1].data.toptracks.track;
-
-          setAlbumData(allAlbumData);
-          setTrackData(allTrackData);
-        })
-      )
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  console.log(fetchedName);
-  console.log(albumData);
-
-  useEffect(() => {
-    getAlbumAndTrackData();
-  }, []);
 
   return (
     <li
@@ -53,18 +17,7 @@ const ArtistItem = (props) => {
     >
       <div className={classes.item_info}>
         <h3>
-          <button onClick={handleClick}>
-            {props.name}
-            {clicked &&
-              albumData.map((item) => (
-                <Link
-                  to={`/artistdetails/${fetchedName}`}
-                  key={item.artist.name}
-                >
-                  <ArtistDetail key={item.mbid} albumName={item.name} />
-                </Link>
-              ))}
-          </button>
+          <Link to={`/artistdetails/${props.name}`}> {props.name} </Link>
         </h3>
         <p>Playcount: {props.playcount} </p>
         <p>Listeners: {props.listeners} </p>
