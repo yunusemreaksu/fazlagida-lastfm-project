@@ -3,12 +3,15 @@ import ArtistList from "./components/Artist/ArtistList/ArtistList";
 import Header from "./components/UI/Header";
 import { ThemeContext, ThemeProvider } from "./store/ThemeContext";
 import "./App.css";
+import axios from "axios";
+import ApiUrl from "./constants/ApiUrl";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const [artistData, setArtistData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState(false);
+
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   const buttonClickHandler = () => {
@@ -16,23 +19,43 @@ function App() {
     toggleDarkMode();
   };
 
-  const loadingText = <p>LOADING...</p>;
+  const loadingText = (
+    <p className={darkMode ? "loading ld_dark" : "loading ld_light"}>
+      LOADING...
+    </p>
+  );
 
   const getArtistsData = async () => {
     try {
-      const response = await fetch(process.env.REACT_APP_ARTISTS_API_URL);
-      const json = await response.json();
-      setData(json.artists.artist);
+      const response = await axios.get(ApiUrl.getTopArtists(page));
+      setArtistData((prev) => {
+        return [...prev, ...response.data.artists.artist];
+      });
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
+    }
+  };
+
+  const handleScroll = async () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
+      setIsLoading(true);
+      setPage((prev) => prev + 1);
     }
   };
 
   useEffect(() => {
-    getArtistsData();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    getArtistsData();
+  }, [page]);
 
   return (
     <div className={darkMode ? `container bg_dark` : `container bg_light`}>
@@ -40,7 +63,8 @@ function App() {
         onThemeChange={buttonClickHandler}
         items={{ darkMode, buttonText }}
       />
-      {isLoading ? loadingText : <ArtistList items={data} />}
+      <ArtistList items={artistData} />
+      {isLoading && loadingText}
     </div>
   );
 }

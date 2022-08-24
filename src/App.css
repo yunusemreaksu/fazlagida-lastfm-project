@@ -1,7 +1,7 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bg_light {
@@ -10,4 +10,19 @@
 
 .bg_dark {
   background-color: #222;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  font-weight: 900;
+}
+
+.ld_dark {
+  color: aliceblue;
+}
+
+.ld_light {
+  color: #222;
 }
