@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import ArtistList from "./components/Artist/ArtistList/ArtistList";
 import Header from "./components/UI/Header/Header";
 import { ThemeContext } from "./store/ThemeContext";
-import "./App.css";
 import axios from "axios";
 import ApiUrl from "./constants/ApiUrl";
+import "./App.css";
 
 function App() {
   const headerText = "Fazla Gida Last.FM Homework";

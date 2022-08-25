@@ -2,7 +2,7 @@
   padding: 1rem;
   margin: 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 14px;
+  border-radius: 15px;
   background-color: #e3e8eb;
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +25,18 @@
   align-items: center;
 }
 
+.name {
+  text-decoration: none;
+}
+
+.name_dark {
+  color: darkcyan;
+}
+
+.name_light {
+  color: #222;
+}
+
 .info {
   display: flex;
   flex-direction: column;
@@ -34,6 +46,8 @@
 .image {
   max-width: 100%;
   height: auto;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px;
 }
 
 @media only screen and (max-width: 768px) {

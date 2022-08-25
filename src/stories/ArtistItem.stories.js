@@ -2,9 +2,9 @@ import React from "react";
 import ArtistItem from "../components/Artist/ArtistItem/ArtistItem";
 
 export default {
-    title: "ArtistItem",
-    component: ArtistItem
-}
+  title: "ArtistItem",
+  component: ArtistItem,
+};
 
 const Template = (args) => <ArtistItem {...args} />;
 

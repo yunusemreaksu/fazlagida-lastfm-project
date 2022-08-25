@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ArtistItem from "../ArtistItem";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeContext, ThemeProvider } from "../../../../store/ThemeContext";
+import { ThemeProvider } from "../../../../store/ThemeContext";
 
 const MockArtistItem = () => {
   return (

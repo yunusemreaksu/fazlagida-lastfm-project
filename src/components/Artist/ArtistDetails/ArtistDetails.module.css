@@ -51,6 +51,7 @@
   margin-right: 1rem;
   border-width: 2px;
   border-style: solid;
+  border-radius: 10px;
 }
 
 .details {
@@ -61,6 +62,7 @@
   border-style: solid;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 1rem;
+  border-radius: 15px;
 }
 
 .info {
@@ -84,6 +86,8 @@
   flex-direction: row;
   max-width: 100%;
   height: auto;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px;
 }
 
 .loading {

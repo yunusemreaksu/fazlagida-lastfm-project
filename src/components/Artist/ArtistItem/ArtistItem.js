@@ -21,7 +21,14 @@ const ArtistItem = (props) => {
         <img src={props.imageSrc} alt={props.name} className={classes.image} />
         <div className={classes.info}>
           <h3>
-            <Link to={`/artistdetails/${props.name}`}> {props.name} </Link>
+            <Link
+              to={`/artistdetails/${props.name}`}
+              className={`${classes.name} ${
+                darkMode ? classes.name_dark : classes.name_light
+              }`}
+            >
+              {props.name}
+            </Link>
           </h3>
           <p>Playcount: {props.playcount} </p>
           <p>Listeners: {props.listeners} </p>

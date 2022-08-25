@@ -81,7 +81,6 @@ const ArtistDetails = () => {
           {params.artistId}
         </h2>
       </div>
-
       <div
         className={`${classes.container} ${
           darkMode ? classes.container_dark : classes.container_light
