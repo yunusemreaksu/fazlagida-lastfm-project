@@ -13,15 +13,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState(false);
 
-  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const context = useContext(ThemeContext);
 
   const buttonClickHandler = () => {
     setButtonText(!buttonText);
-    toggleDarkMode();
+    context.toggleDarkMode();
   };
 
   const loadingText = (
-    <p className={darkMode ? "loading ld_dark" : "loading ld_light"}>
+    <p className={context.darkMode ? "loading ld_dark" : "loading ld_light"}>
       LOADING...
     </p>
   );
@@ -59,10 +59,10 @@ function App() {
   }, [page]);
 
   return (
-    <div className={darkMode ? `container bg_dark` : `container bg_light`}>
+    <div className={context.darkMode ? `container bg_dark` : `container bg_light`}>
       <Header
         onThemeChange={buttonClickHandler}
-        items={{ darkMode, buttonText, headerText }}
+        items={{ buttonText, headerText }}
       />
       <ArtistList items={artistData} />
       {isLoading && loadingText}

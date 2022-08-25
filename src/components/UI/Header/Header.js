@@ -1,8 +1,12 @@
 import classes from "./Header.module.css";
 import { PropTypes } from "prop-types";
+import { useContext } from "react";
+import { ThemeContext } from "../../../store/ThemeContext";
 
 const Header = (props) => {
-  const { darkMode, buttonText, headerText } = props.items;
+  const { buttonText, headerText } = props.items;
+  
+  const context = useContext(ThemeContext)
 
   const clickHandler = () => {
     props.onThemeChange();
@@ -11,7 +15,7 @@ const Header = (props) => {
   return (
     <header
       className={`${classes.header_container} ${
-        darkMode ? classes.header_dark : classes.header_light
+        context.darkMode ? classes.header_dark : classes.header_light
       }`}
     >
       <h1 title="Header"> {headerText} </h1>

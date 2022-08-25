@@ -5,13 +5,13 @@ import { PropTypes } from "prop-types";
 import classes from "./ArtistList.module.css";
 
 const ArtistList = (props) => {
-  const { darkMode } = useContext(ThemeContext);
+  const context = useContext(ThemeContext);
 
   return (
     <div className={classes.main}>
       <h2
         className={`${classes.list_header} ${
-          darkMode ? classes.header_dark : classes.header_light
+         context.darkMode ? classes.header_dark : classes.header_light
         }`}
       >
         Top Artists List

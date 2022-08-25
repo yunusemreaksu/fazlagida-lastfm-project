@@ -6,7 +6,7 @@ import { ThemeContext } from "../../../store/ThemeContext";
 import classes from "./ArtistDetails.module.css";
 
 const ArtistDetails = () => {
-  const { darkMode } = useContext(ThemeContext);
+  const context = useContext(ThemeContext);
   const [albumData, setAlbumData] = useState([]);
   const [trackData, setTrackData] = useState([]);
   const [page, setPage] = useState(1);
@@ -61,14 +61,14 @@ const ArtistDetails = () => {
   return (
     <div
       className={`${classes.main} ${
-        darkMode ? classes.main_dark : classes.main_light
+        context.darkMode ? classes.main_dark : classes.main_light
       }`}
     >
       <div>
         <img />
         <h2
           className={`${classes.artist} ${
-            darkMode ? classes.artist_dark : classes.artist_light
+            context.darkMode ? classes.artist_dark : classes.artist_light
           }`}
         >
           {params.artistId}
@@ -77,7 +77,7 @@ const ArtistDetails = () => {
 
       <div
         className={`${classes.container} ${
-          darkMode ? classes.container_dark : classes.container_light
+          context.darkMode ? classes.container_dark : classes.container_light
         }`}
       >
         <div className={classes.card}>
@@ -85,7 +85,7 @@ const ArtistDetails = () => {
           {albumData.map((item) => (
             <div
               className={`${classes.details} ${
-                darkMode ? classes.details_dark : classes.details_light
+                context.darkMode ? classes.details_dark : classes.details_light
               }`}
             >
               <img
@@ -105,7 +105,7 @@ const ArtistDetails = () => {
           {trackData.map((item) => (
             <div
               className={`${classes.details} ${
-                darkMode ? classes.details_dark : classes.details_light
+                context.darkMode ? classes.details_dark : classes.details_light
               }`}
             >
               <img

@@ -5,17 +5,17 @@ import { PropTypes } from "prop-types";
 import classes from "./ArtistItem.module.css";
 
 const ArtistItem = (props) => {
-  const { darkMode } = useContext(ThemeContext);
+  const context = useContext(ThemeContext);
 
   return (
     <li
       className={`${classes.container} ${
-        darkMode ? classes.container_dark : classes.container_light
+        context.darkMode ? classes.container_dark : classes.container_light
       }`}
     >
       <div
         className={`${classes.card} ${
-          darkMode ? classes.card : classes.card_light
+          context.darkMode ? classes.card : classes.card_light
         }`}
       >
         <img src={props.imageSrc} alt={props.name} className={classes.image} />
