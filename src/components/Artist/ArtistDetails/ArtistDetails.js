@@ -65,7 +65,7 @@ const ArtistDetails = () => {
       }`}
     >
       <div>
-        <img src="" />
+        <img />
         <h2
           className={`${classes.artist} ${
             darkMode ? classes.artist_dark : classes.artist_light

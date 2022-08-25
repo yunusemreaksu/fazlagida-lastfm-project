@@ -21,6 +21,8 @@
 
 .card {
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .info {
@@ -32,4 +34,19 @@
 .image {
   max-width: 100%;
   height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .image {
+    width: 30%;
+    height: auto;
+  }
 }

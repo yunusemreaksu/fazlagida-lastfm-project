@@ -80,15 +80,22 @@
 }
 
 .image {
-  /* display: flex;
-  flex-direction: row; */
+  display: flex;
+  flex-direction: row;
   max-width: 100%;
   height: auto;
 }
 
 @media only screen and (max-width: 768px) {
   .image {
-    max-width: 100%;
-    height: auto;
+    width: 40%;
+    height: 40%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
   }
 }
