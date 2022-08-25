@@ -1,11 +1,21 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ArtistItem from "../ArtistItem";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeContext, ThemeProvider } from "../../../../store/ThemeContext";
+
+const MockArtistItem = () => {
+  return (
+    <ThemeProvider>
+      <BrowserRouter>
+        <ArtistItem />
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+};
 
 test("renders alt text", async () => {
-  render(<ArtistItem />);
-  //   const buttonElement = screen.getByRole("button", {name: /button/i})
-  //   fireEvent.click(buttonElement)
-  //   expect(buttonElement).toBeInTheDocument();
-  const imgElement = screen.getByAltText(/header/i);
+  render(<MockArtistItem />);
+
+  const imgElement = screen.getByAltText(/the weekend/i);
   expect(imgElement).toBeInTheDocument();
 });

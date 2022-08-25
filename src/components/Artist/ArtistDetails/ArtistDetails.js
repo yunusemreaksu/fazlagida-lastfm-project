@@ -10,7 +10,14 @@ const ArtistDetails = () => {
   const [albumData, setAlbumData] = useState([]);
   const [trackData, setTrackData] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   let params = useParams();
+
+  const loadingText = (
+    <p className={darkMode ? "loading ld_dark" : "loading ld_light"}>
+      LOADING...
+    </p>
+  );
 
   const getAlbumAndTrackData = async () => {
     const getAlbums = await axios.get(
@@ -48,6 +55,7 @@ const ArtistDetails = () => {
       window.innerHeight + document.documentElement.scrollTop + 1 >=
       document.documentElement.scrollHeight
     ) {
+      setIsLoading(true);
       setPage((prev) => prev + 1);
     }
   };
@@ -65,7 +73,6 @@ const ArtistDetails = () => {
       }`}
     >
       <div>
-        <img />
         <h2
           className={`${classes.artist} ${
             darkMode ? classes.artist_dark : classes.artist_light
@@ -82,8 +89,9 @@ const ArtistDetails = () => {
       >
         <div className={classes.card}>
           <h3>TOP ALBUMS</h3>
-          {albumData.map((item) => (
+          {albumData.map((item, index) => (
             <div
+              data-testid={`details-${index}`}
               className={`${classes.details} ${
                 darkMode ? classes.details_dark : classes.details_light
               }`}
@@ -122,6 +130,7 @@ const ArtistDetails = () => {
           ))}
         </div>
       </div>
+      {isLoading && loadingText}
     </div>
   );
 };

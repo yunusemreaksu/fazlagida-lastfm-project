@@ -1,12 +1,15 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ThemeContext, ThemeProvider } from "../../../../store/ThemeContext";
+import { BrowserRouter } from "react-router-dom";
 import Header from "../Header";
 
 const MockHeader = () => {
   return (
-    <ThemeContext>
-      <Header />
-    </ThemeContext>
+    <BrowserRouter>
+      <ThemeProvider>
+        <Header />
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 

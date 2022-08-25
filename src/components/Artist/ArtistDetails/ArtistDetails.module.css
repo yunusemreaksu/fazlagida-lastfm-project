@@ -4,7 +4,7 @@
 }
 
 .main_dark {
-  background-color: black;
+  background-color: #222;
 }
 
 .main_light {
@@ -18,7 +18,7 @@
 
 .artist_dark {
   color: #e3e8eb;
-  background-color: black;
+  background-color: #222;
 }
 
 .artist_light {
@@ -56,7 +56,7 @@
 .details {
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding: 0.5rem;
   border-width: 1px;
   border-style: solid;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -84,6 +84,21 @@
   flex-direction: row;
   max-width: 100%;
   height: auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  font-weight: 900;
+}
+
+.ld_dark {
+  color: aliceblue;
+}
+
+.ld_light {
+  color: #222;
 }
 
 @media only screen and (max-width: 768px) {
