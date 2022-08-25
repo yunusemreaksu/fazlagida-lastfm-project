@@ -1,4 +1,5 @@
 import classes from "./Header.module.css";
+import { PropTypes } from "prop-types";
 
 const Header = (props) => {
   const { darkMode, buttonText, headerText } = props.items;
@@ -23,6 +24,13 @@ const Header = (props) => {
       </button>
     </header>
   );
+};
+
+Header.propTypes = {
+  darkMode: PropTypes.bool,
+  buttonText: PropTypes.string,
+  headerText: PropTypes.string,
+  onThemeChange: PropTypes.func,
 };
 
 export default Header;

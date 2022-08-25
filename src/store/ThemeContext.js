@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { PropTypes } from "prop-types";
 
 const ThemeContext = createContext();
 
@@ -13,6 +14,10 @@ const ThemeProvider = (props) => {
       {props.children}
     </ThemeContext.Provider>
   );
+};
+
+ThemeContext.propTypes = {
+  darkMode: PropTypes.bool,
 };
 
 export { ThemeContext, ThemeProvider };

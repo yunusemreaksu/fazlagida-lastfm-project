@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../store/ThemeContext";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 import classes from "./ArtistItem.module.css";
 
 const ArtistItem = (props) => {
@@ -29,6 +30,15 @@ const ArtistItem = (props) => {
       </div>
     </li>
   );
+};
+
+ArtistItem.propTypes = {
+  darkMode: PropTypes.bool,
+  name: PropTypes.string,
+  playcount: PropTypes.string,
+  listeners: PropTypes.string,
+  url: PropTypes.string,
+  imageSrc: PropTypes.string,
 };
 
 export default ArtistItem;

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../store/ThemeContext";
 import ArtistItem from "../ArtistItem/ArtistItem";
+import { PropTypes } from "prop-types";
 import classes from "./ArtistList.module.css";
 
 const ArtistList = (props) => {
@@ -30,6 +31,11 @@ const ArtistList = (props) => {
       </ul>
     </div>
   );
+};
+
+ArtistList.propTypes = {
+  darkMode: PropTypes.bool,
+  items: PropTypes.array,
 };
 
 export default ArtistList;
