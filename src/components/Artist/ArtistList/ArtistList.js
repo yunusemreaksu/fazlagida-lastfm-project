@@ -7,7 +7,7 @@ const ArtistList = (props) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <div>
+    <div className={classes.main}>
       <h2
         className={`${classes.list_header} ${
           darkMode ? classes.header_dark : classes.header_light
@@ -15,7 +15,7 @@ const ArtistList = (props) => {
       >
         Top Artists List
       </h2>
-      <ul>
+      <ul className={classes.list}>
         {props.items.map((item) => (
           <ArtistItem
             key={item.mbid}
@@ -24,7 +24,7 @@ const ArtistList = (props) => {
             playcount={item.playcount}
             listeners={item.listeners}
             url={item.url}
-            imageText={item.image[0]["#text"]}
+            imageSrc={item.image[2]["#text"]}
           />
         ))}
       </ul>

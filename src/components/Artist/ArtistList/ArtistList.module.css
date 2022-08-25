@@ -1,3 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
 .list_header {
   padding: 0 1rem;
 }

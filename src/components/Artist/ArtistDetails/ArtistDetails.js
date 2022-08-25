@@ -93,7 +93,7 @@ const ArtistDetails = () => {
                 className={classes.image}
                 alt={item.name}
               />
-              <div className={classes.texts}>
+              <div className={classes.info}>
                 <p>Album Name: {item.name}</p>
                 <p>Playcount: {item.playcount}</p>
               </div>
@@ -113,7 +113,7 @@ const ArtistDetails = () => {
                 className={classes.image}
                 alt={item.name}
               />
-              <div className={classes.texts}>
+              <div className={classes.info}>
                 <p>Song Name: {item.name}</p>
                 <p>Playcount: {item.playcount}</p>
                 <p>Listeners: {item.listeners}</p>

@@ -47,6 +47,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border-width: 2px;
   border-style: solid;
 }
@@ -61,7 +63,7 @@
   margin: 1rem;
 }
 
-.texts {
+.info {
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -78,6 +80,15 @@
 }
 
 .image {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .image {
+    max-width: 100%;
+    height: auto;
+  }
 }
