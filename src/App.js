@@ -9,7 +9,7 @@ import ApiUrl from "./constants/ApiUrl";
 function App() {
   const headerText = "Fazla Gida Last.FM Homework";
   const [artistData, setArtistData] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState(false);
 
@@ -29,8 +29,8 @@ function App() {
   const getArtistsData = async () => {
     try {
       const response = await axios.get(ApiUrl.getTopArtists(page));
-      setArtistData((prev) => {
-        return [...prev, ...response.data.artists.artist];
+      setArtistData(() => {
+        return [...response.data.artists.artist];
       });
       setIsLoading(false);
     } catch (error) {
